@@ -1,0 +1,38 @@
+ports:
+  - port: 8000
+    onOpen: open-browser
+
+image: gitpod/workspace-mysql
+
+tasks:
+  - init: >
+      pip3 install --upgrade pip && 
+      pip3 install -r requirements.txt 
+      
+  - command: >
+      echo Terminal1 &&
+      mysql -u root &&
+      mysql -e "create database mydb;" &&
+      mysql -e "show databases;"
+      
+
+# 手動設定
+## DATABASESの設定
+# DATABASES = {
+#     'default': {
+#     'ENGINE': 'django.db.backends.postgresql',
+#     'NAME': 'postgres',
+#     'USER': 'postgres',
+#     'HOST': 'db',
+#     'PORT': 5432,
+#   }
+# }
+# ALLOWED_HOSTSの設定
+# ALLOWED_HOSTS = ['localhost','127.0.0.1']
+## Djangoプロジェクトの起動
+# docker container exec -it django-dev_web_1 django-dev/manage.py runserver 0.0.0.0:8000
+## .env 
+#USERNAME=sampleuser
+#USERPASS=password
+#DATABASE=SAMPLEDB
+#ROOTPASS=password
